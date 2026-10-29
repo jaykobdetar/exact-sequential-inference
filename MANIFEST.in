@@ -1,0 +1,6 @@
+include README.source.md RELEASE_READINESS.md
+recursive-include configs *.json
+recursive-include examples *.json
+recursive-include schemas *.json
+recursive-include scripts *.py
+recursive-include tests *.py

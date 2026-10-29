@@ -4,7 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "exact-sequential-inference"
-version = "1.0.2"
+version = "1.0.3"
+readme = "README.md"
 description = "Exact rational active sensing and temporal HMM data generator"
 requires-python = ">=3.10"
 dependencies = []

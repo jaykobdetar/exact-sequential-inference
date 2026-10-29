@@ -1,4 +1,5 @@
-"""Read-only, version-pinned 2/3-state horizon-zero task-8 compatibility check."""
+"""Read-only, source-hashed 2/3-state horizon-zero task-8 compatibility check."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -6,7 +7,16 @@ import sys
 from fractions import Fraction
 from itertools import product
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-sys.path.insert(0,'/home/jaykob/Documents/Codex/2026-10-02/task-8')
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--task8-root', type=Path, help='Optional trusted checkout containing probabilistic_calibration')
+args = parser.parse_args()
+if args.task8_root is None:
+    print(json.dumps({'status': 'skipped', 'reason': 'optional task-8 checkout not supplied'}))
+    raise SystemExit(0)
+root = args.task8_root.resolve() / 'probabilistic_calibration'
+if not all((root / name).is_file() for name in ('common.py', 'solver.py', 'oracle.py')):
+    parser.error('--task8-root must contain probabilistic_calibration/{common,solver,oracle}.py')
+sys.path.insert(0, str(root.parent))
 from exact_sequential_inference.active import solve
 from exact_sequential_inference.common import qstr
 from probabilistic_calibration.solver import solve as task8_solve
@@ -30,5 +40,4 @@ for n in (2,3):
                     assert [v for a,v in answer['action_values']]==ref['expected_losses'][:n]
                     assert optimal==[a for a in ref['optimal_actions'] if a<n]
             cases+=1
-root=Path('/home/jaykob/Documents/Codex/2026-10-02/task-8/probabilistic_calibration')
 print(json.dumps({'cases':cases,'states':[2,3],'task8_source_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [root/'common.py',root/'solver.py',root/'oracle.py']},'passed':True},sort_keys=True))
