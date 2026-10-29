@@ -58,4 +58,4 @@ The second command imports code from the supplied checkout and reports its sourc
 
 ## Release readiness
 
-See [RELEASE_READINESS.md](RELEASE_READINESS.md) for verification and outstanding decisions. No license has been selected: public visibility would not itself grant reuse permission. The owner must confirm rights/provenance and choose an appropriate license before describing this as an open-source release. Repository visibility remains private pending owner review.
+See [RELEASE_READINESS.md](RELEASE_READINESS.md) for verification and outstanding decisions. Licensed under the [MIT License](LICENSE) at the owner's explicit request. On 2026-10-29, the owner stated that all code was created by AI and authorized MIT licensing. This records that assertion and authorization; it does not independently establish authorship, copyrightability or third-party rights. Repository visibility remains private pending owner review.

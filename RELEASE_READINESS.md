@@ -26,13 +26,15 @@ Python 3.14.7 on Linux, single-process CPU-only checks; no models or research tr
 - Outside the checkout (`cwd=/tmp`), confirmed imports came from the installed wheel; generated and validated a reduced one-split dataset: 48 records, 6 groups, all oracle/trace checks passed, absent-evidence marker present.
 - Regenerated JSON schemas with no diff. Linux resource wrapper created a fresh receipt directory and passed a one-second headroom sample. `git diff --check` passed.
 
+MIT follow-up verification: rebuilt wheel and sdist with setuptools 84.2.1; verified `License-Expression: MIT`, `License-File: LICENSE`, and byte-identical license text included in both archives. `git diff --check` passed. This metadata-only follow-up did not rerun solver tests.
+
 No compatibility run on Python 3.10–3.13, full external task-8 comparison, model evaluation, or historical evidence validation was performed.
 
 ## Privacy and provenance review
 
 The available repository history contains one original commit (`9c83ac7`) and 33 tracked text blobs. Reviewed source, manifests, docs and history for embedded credentials, local paths, provenance and third-party notices. A bounded pattern scan for private keys and common GitHub/AWS/API credential formats returned no file hits; this is not a guarantee against every secret form. No credential values, raw chats, personal documents or datasets were discovered. One hard-coded local checkout path was removed from the current code. That path remains in the original commit history; decide whether this ordinary historical username/date path is acceptable before publishing. No history rewrite was performed.
 
-The original commit uses the owner's GitHub noreply address. Original development history and third-party ownership evidence are unavailable. No third-party license notices were found to remove or replace. No license has been invented.
+The original commit uses the owner's GitHub noreply address. Original development history and third-party ownership evidence are unavailable. No third-party license notices were found to remove or replace. On 2026-10-29, in response to a rights-and-licensing question, the owner stated that all code was created by AI and explicitly authorized MIT licensing. The MIT license and package metadata implement that instruction; this is an attributed owner assertion, not an independent legal determination. No existing third-party notices were removed.
 
 ## Owner release checklist
 
@@ -40,7 +42,7 @@ The original commit uses the owner's GitHub noreply address. Original developmen
 - [x] New manifests disclose that historical evidence is not bundled.
 - [x] Bounded solver, semantic contract and CLI tests exercised.
 - [x] Supplied smoke data regenerated and validated independently.
-- [ ] Confirm authorship/rights and choose a license; MIT or Apache-2.0 are possible choices only after ownership review.
+- [x] Record the owner's AI-generation assertion and explicit MIT authorization; add LICENSE and matching package metadata.
 - [ ] Decide whether to publish as a source-only research prototype, or recover and review the genuine original spec/evidence before making historical reproducibility claims.
 - [ ] Accept the remaining ordinary local path in the original Git history, or separately authorize a history-sanitization plan.
 - [ ] Review the draft PR and verify supported Python versions beyond the locally tested 3.14.7 (minimum declared version is 3.10).
