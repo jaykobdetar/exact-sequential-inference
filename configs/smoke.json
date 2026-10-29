@@ -1,0 +1,21 @@
+{
+  "schema_version": "exact_sequential_inference-config/1.0",
+  "seed": 20261002,
+  "active_groups_per_split": 1,
+  "temporal_families_per_cell_split": 1,
+  "active_splits": [
+    "train",
+    "validation",
+    "test_id",
+    "ood_likelihood",
+    "ood_surface"
+  ],
+  "temporal_splits": [
+    "train",
+    "validation",
+    "test_id",
+    "ood_surface"
+  ],
+  "max_dataset_bytes": 20000000,
+  "temporal_schedule": "one_per_time_entity_t_mod16"
+}

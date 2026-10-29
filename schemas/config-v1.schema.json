@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "exact_sequential_inference-config/1.0"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "active_groups_per_split": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20
+    },
+    "temporal_families_per_cell_split": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "active_splits": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "train",
+          "validation",
+          "test_id",
+          "ood_likelihood",
+          "ood_surface"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 5,
+      "uniqueItems": true
+    },
+    "temporal_splits": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "train",
+          "validation",
+          "test_id",
+          "ood_surface"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "max_dataset_bytes": {
+      "type": "integer",
+      "minimum": 1000,
+      "maximum": 20000000
+    },
+    "temporal_schedule": {
+      "const": "one_per_time_entity_t_mod16"
+    }
+  },
+  "required": [
+    "schema_version",
+    "seed",
+    "active_groups_per_split",
+    "temporal_families_per_cell_split",
+    "active_splits",
+    "temporal_splits",
+    "max_dataset_bytes",
+    "temporal_schedule"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:exact-sequential-inference:config:1.0"
+}
