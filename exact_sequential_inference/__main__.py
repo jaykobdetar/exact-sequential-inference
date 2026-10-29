@@ -51,7 +51,7 @@ def main():
         output = Path(args.output)
         require(not output.exists(), "export exists; use a new path")
         count = 0
-        with (Path(args.dataset) / "records.jsonl").open() as source, output.open("w") as out:
+        with (Path(args.dataset) / "records.jsonl").open() as source, output.open("x", encoding="utf-8") as out:
             for line in source:
                 r = json.loads(line)
                 if r["mode"] == "active_sensing":

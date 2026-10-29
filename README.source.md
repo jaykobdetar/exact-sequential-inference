@@ -1,3 +1,7 @@
+# Historical technical notes
+
+These notes describe the original project, not a verified release bundle. The referenced `evidence/`, validation report, amendment and parent approvals are **absent from this repository**. Claims about historical review are unverified. See [README.md](README.md) for current setup and status.
+
 # G2 · Exact sequential inference
 
 This standard-library Python package supplies two separate formal generators for proposed L1 and L2 experiments: `active_sensing` and `noisy_temporal`. It implements new sequential decisions and noisy Markov inference. Task-8's static terminal calibration and task-6's deterministic revision lookup are read-only references, not dependencies of this package.

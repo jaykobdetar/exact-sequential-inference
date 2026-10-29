@@ -31,6 +31,7 @@ def main():
     if args.memory_mib not in (128,256):raise SystemExit('memory budget must be 128 or 256 MiB')
     if args.preflight_mib<2048 or args.stop_mib<1792:raise SystemExit('guard cannot go below parent-authorized thresholds')
     prefix=Path('reports/history')/args.label
+    prefix.parent.mkdir(parents=True, exist_ok=True)
     receipt=prefix.with_suffix('.json')
     if receipt.exists():
         raise SystemExit('Refusing to overwrite resource receipt')
@@ -43,7 +44,7 @@ def main():
     else:
         command=args.command[1:] if args.command[:1]==['--'] else args.command
         if samples[0]['available_kib']<args.preflight_mib*1024:
-            result={"kind":"bounded_run","command":command,"samples":samples,"passed":False,"blocker":"initial headroom below 2.2 GiB"}
+            result={"kind":"bounded_run","command":command,"samples":samples,"passed":False,"blocker":"initial headroom below configured preflight threshold"}
         else:
             def limits():
                 resource.setrlimit(resource.RLIMIT_AS,(args.memory_mib*1024*1024,args.memory_mib*1024*1024))

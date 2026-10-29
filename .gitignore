@@ -8,3 +8,10 @@ node_modules/
 *.key
 *.pem
 .mcp.json
+
+build/
+dist/
+*.egg-info/
+data-new/
+reports/
+*-inputs.jsonl
